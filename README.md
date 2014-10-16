@@ -15,7 +15,7 @@ $ npm install skiff-tcp-nlsjson --save
 
 ```javascript
 var Transport = require('skiff-tcp-nlsjson');
-var transport = Transport();
+var transport = new Transport();
 
 var Node = require('skiff');
 var node = Node({
