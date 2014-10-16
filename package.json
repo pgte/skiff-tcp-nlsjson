@@ -1,0 +1,44 @@
+{
+  "name": "skiff-tcp-nlsjon",
+  "version": "0.0.1",
+  "description": "New-line separated JSON over TCP transport layer for Skiff",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test",
+    "jshint": "jshint -c .jshintrc --exclude-path .gitignore .",
+    "codestyle": "jscs -p google lib/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pgte/skiff-tcp-nlsjon.git"
+  },
+  "keywords": [
+    "skiff",
+    "raft",
+    "consensus",
+    "transport",
+    "tcp",
+    "newline separated json",
+    "json"
+  ],
+  "author": "pgte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgte/skiff-tcp-nlsjon/issues"
+  },
+  "homepage": "https://github.com/pgte/skiff-tcp-nlsjon",
+  "devDependencies": {
+    "jscs": "^1.7.1",
+    "jshint": "^2.5.6",
+    "pre-commit": "0.0.9"
+  },
+  "pre-commit": [
+    "codestyle",
+    "jshint",
+    "test"
+  ],
+  "dependencies": {
+    "reconnect-net": "0.0.0",
+    "split": "^0.3.0"
+  }
+}
