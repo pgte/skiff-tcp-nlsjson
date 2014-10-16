@@ -8,7 +8,7 @@ New-line separated JSON over TCP transport for Skiff.
 ## Install
 
 ```bash
-$ npm install skiff-tcp-json --save
+$ npm install skiff-tcp-nlsjson --save
 ```
 
 ## Use
