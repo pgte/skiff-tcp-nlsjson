@@ -15,6 +15,7 @@ var options = {
     server.__connections = [];
 
     function onConnection(c) {
+
       server.__connections.push(c);
       c.pipe(split()).
         on('data', onLine);
@@ -25,6 +26,14 @@ var options = {
           c.write(JSON.stringify({response: d.request}) + '\n');
         }
       }
+
+      c.once('close', function() {
+        var idx = server.__connections.indexOf(c);
+        if (idx >= 0) {
+          server.__connections.splice(idx, 1);
+        }
+      });
+
     }
   },
   stopServer: function(server, cb) {
@@ -56,7 +65,27 @@ var options = {
     }
 
   },
-  connectOptions: {port: 8081}
+  connect: function() {
+    var self = this;
+
+    var c = net.connect(8081, function() {
+      c.pipe(split()).on('data', function(line) {
+        if (line) {
+          var m = JSON.parse(line);
+          if (m.hello) {
+            c.write(JSON.stringify({helloback: self.listenPeerId}) + '\n');
+          }
+        }
+      });
+    });
+
+    return c;
+  },
+  disconnect: function(c) {
+    c.end();
+  },
+  connectOptions: {port: 8081},
+  listenPeerId: 'listenpeerid'
 };
 
 test(new Transport(), options);
