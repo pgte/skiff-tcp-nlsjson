@@ -38,7 +38,7 @@
     "test"
   ],
   "dependencies": {
-    "abstract-skiff-transport": "0.5.2",
+    "abstract-skiff-transport": "0.6.0",
     "reconnect-net": "0.0.0",
     "split": "^0.3.0"
   }

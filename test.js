@@ -84,7 +84,7 @@ var options = {
   disconnect: function(c) {
     c.end();
   },
-  connectOptions: {port: 8081},
+  connectURL: 'tcp+nlsjson://localhost:8081',
   listenPeerId: 'listenpeerid'
 };
 
