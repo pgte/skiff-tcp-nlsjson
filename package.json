@@ -1,6 +1,6 @@
 {
   "name": "skiff-tcp-nlsjson",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "New-line separated JSON over TCP transport layer for Skiff",
   "main": "lib/index.js",
   "scripts": {
