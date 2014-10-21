@@ -24,6 +24,7 @@ var options = {
         if (l) {
           var d = JSON.parse(l);
           if (d.request) {
+            d.request.unshift(undefined);
             c.write(JSON.stringify({response: d.request}) + '\n');
           }
         }
