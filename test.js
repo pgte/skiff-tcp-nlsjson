@@ -23,7 +23,9 @@ var options = {
       function onLine(l) {
         if (l) {
           var d = JSON.parse(l);
-          c.write(JSON.stringify({response: d.request}) + '\n');
+          if (d.request) {
+            c.write(JSON.stringify({response: d.request}) + '\n');
+          }
         }
       }
 
@@ -68,16 +70,9 @@ var options = {
   connect: function() {
     var self = this;
 
-    var c = net.connect(8081, function() {
-      c.pipe(split()).on('data', function(line) {
-        if (line) {
-          var m = JSON.parse(line);
-          if (m.hello) {
-            c.write(JSON.stringify({helloback: self.listenPeerId}) + '\n');
-          }
-        }
-      });
-    });
+    var c = net.connect(8081);
+    c.write(JSON.stringify({hello: self.listenPeerId}) + '\n');
+    c.pipe(split()).on('data', function() {});
 
     return c;
   },
